@@ -1,7 +1,7 @@
-pipeline [
+pipeline {
     agent {
         node {
-            label 'maven'
+            label 'nodejs'
         }
     }
     stages {
@@ -21,4 +21,4 @@ pipeline [
             }
         }
     }
-]
+}
