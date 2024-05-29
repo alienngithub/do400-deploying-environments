@@ -17,8 +17,7 @@ pipeline {
 
             }
         }
-        stage {
-            'Build Image' {
+        stage('Build Image') {
                 environment { QUAY = credentials('QUAY_USER') }
                 steps {
                     sh '''
@@ -36,7 +35,7 @@ pipeline {
                         -Dquarkuscontainer-image.password="$QUAY_PSW" \
                         -Dquarkuscontainer-image.push=true
                         '''
-                        
+
                 }
             }
         }
