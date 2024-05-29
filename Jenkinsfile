@@ -61,5 +61,20 @@ pipeline {
                   """
             }
         } 
+        stage('Deploy - Prod') {
+            environment {
+                APP_NAMESPACE = "xudlbs-shopping-cart-production"
+                QUAY = credentials('QUAY_USER')
+            }
+            input { message 'Deploy to PROD?'}
+            steps {
+                sh '''
+                oc set image \
+                deployment ${DEPLOYMENT_PRODUCTION} \
+                shopping-cart-production=quay.io/${QUAY_USR}/do400-deploying-environments:build-${BUILD_NUMBER} \
+                -n ${APP_NAMESPACE} --record
+                '''
+            }
+        }
         }
     }
