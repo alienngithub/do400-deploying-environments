@@ -49,7 +49,7 @@ pipeline {
         
         stage('Deploy - Stage') {
             environment {
-                APP_NAMESPACE = "${RHT_OCP4_DEV_USR}-shopping-cart-stage"
+                APP_NAMESPACE = "xudlbs-shopping-cart-stage"
                 QUAY = credentials('QUAY_USER')
             }
             steps {
@@ -57,7 +57,7 @@ pipeline {
                   oc set image \
                   deployment ${DEPLOYMENT_STAGE} \
                   shopping-cart-stage=quay.io/${QUAY_USR}/do400-deploying-environments:build-${BUILD_NUMBER} \
-                  -n ${APP_NAMESPACE} --record
+                  -n ${APP_NAMESPACE} 
                   """
             }
         } 
