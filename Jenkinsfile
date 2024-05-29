@@ -1,9 +1,6 @@
 pipeline {
-    agent {
-        node {
-            label 'nodejs'
-        }
-    }
+    agent any
+    tools {maven "maven"} 
     stages {
         stage('Tests') {
             steps {
