@@ -23,6 +23,8 @@ pipeline {
                     sh '''
                       mvn quarkus:add-extension \
                       -Dextensions="container-image-jib"
+                      mvn quarkus:add-extension \
+                      -Dextensions="kubernetes"
                       '''
                       sh '''
                         mvn package -DskipTests \
