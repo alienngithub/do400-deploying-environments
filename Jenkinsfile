@@ -46,7 +46,7 @@ pipeline {
 
                 }
             }
-        }
+        
         stage('Deploy - Stage') {
             environment {
                 APP_NAMESPACE = "${RHT_OCP4_DEV_USR}-shopping-cart-stage"
@@ -60,5 +60,6 @@ pipeline {
                   -n ${APP_NAMESPACE} --record
                   """
             }
+        } 
         }
     }
